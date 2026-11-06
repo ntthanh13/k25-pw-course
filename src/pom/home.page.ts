@@ -1,5 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 import { CommonComponents } from "./common.components";
+import { product_001 } from "../data/product.data";
+import { ProductPage } from "./product.page";
 
 export class HomePage extends CommonComponents {
     // propety
@@ -7,7 +9,9 @@ export class HomePage extends CommonComponents {
     searchResultHeaderLoc: Locator;
     searchResultCountLoc: Locator;
     searchResultItemListLoc: Locator;
+
     defaultListItemLoc: Locator;
+    product1Loc: Locator;
 
     // constructor
     constructor(page: Page) {
@@ -17,6 +21,7 @@ export class HomePage extends CommonComponents {
         this.searchResultCountLoc = page.locator('//p[@class="woocommerce-result-count"]');
         this.searchResultItemListLoc = page.locator('//ul[@class="products columns-4"]/li');
         this.defaultListItemLoc = page.locator('//ul[@data-block-name="woocommerce/product-template"]/li');
+        this.product1Loc = page.getByRole('link', { name: product_001.name }).first();
     }
 
     // method
@@ -41,5 +46,9 @@ export class HomePage extends CommonComponents {
     async getSearchItemText() {
         const itemContent = await this.searchResultItemListLoc.allTextContents();
         return itemContent;
+    }
+    async goToProduct1() {
+        await this.product1Loc.click();
+        return new ProductPage(this.page);
     }
 }
