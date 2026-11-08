@@ -68,8 +68,10 @@ test.describe('Home page test', async () => {
         });
     });
 
-    test('PRODUCT_002: Verify product review fuction', async ({ homePage }) => {
+    test('PRODUCT_002: Verify product review fuction', async ({ homePage, browser }) => {
         let productPage: ProductPage;
+        let prodPage2: ProductPage;
+
         // Step 1
         await test.step('Go to product and view review tab', async () => {
             productPage = await homePage.goToProduct1();
@@ -94,11 +96,20 @@ test.describe('Home page test', async () => {
         });
         // Step 3
         await test.step('Refresh page to verify review', async () => {
-            await productPage.refreshPage();
+            // await productPage.refreshPage();
+            
             // Verify test step
             await expect(productPage.commentTextLoc).toContainText(product_001.waitingApprove);
         });
         // Step 4
-        // await test.step('', async () => { });
+        await test.step('Go to product page with new tab, verify review not posted', async () => {
+            const newContext = await browser.newContext();
+            const newPage = await newContext.newPage();
+            await newPage.goto(product_001.prodURL);
+            prodPage2 = new ProductPage(newPage);
+            await prodPage2.tabReviewLoc.click();
+            // Verify test step
+            await expect(prodPage2.reviewFormLoc).toContainText(product_001.noReview);
+        });
     });
 });

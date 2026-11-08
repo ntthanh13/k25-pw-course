@@ -1,6 +1,7 @@
 export type Rating = 1 | 2 | 3 | 4 | 5;
 
 export const product_001 = {
+    prodURL:"https://e-commerce-dev.betterbytesvn.com/product/fullstack-automation-qa-voi-playwright-typescript/",
     name:"FullStack Automation QA với Playwright Typescript",
     originPrice:"2.499.000",
     salePrice:"1.749.000",
@@ -8,7 +9,7 @@ export const product_001 = {
     noReview:"There are no reviews yet",
     yourRating: 5,
     yourReview: "Khoa hoc chat luong",
-    yourName: "Thành",
-    yourEmail: "thanhdeptrai@gmail.com",
+    yourName: "TNT03",
+    yourEmail: "tnt03@gmail.com",
     waitingApprove: "Your review is awaiting approval"
 }

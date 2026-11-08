@@ -51,6 +51,6 @@ export class CommonComponents {
         await this.menuBlogLoc.click();
     }
     async refreshPage(){
-        await this.refreshPage();
+        await this.page.reload();
     }
 }

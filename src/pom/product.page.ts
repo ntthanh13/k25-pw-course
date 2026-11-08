@@ -22,7 +22,7 @@ export class ProductPage extends CommonComponents {
     star4Loc: Locator;
     star5Loc: Locator;
     commentTextLoc: Locator;
-
+    //
     constructor(page: Page) {
         super(page);
         this.productNameLoc = page.locator('//h1[@class="product_title entry-title"]');
@@ -46,7 +46,7 @@ export class ProductPage extends CommonComponents {
         this.star5Loc = page.locator('//a[@class="star-5"]');
         this.commentTextLoc = page.locator('//div[@class="comment-text"]');
     }
-
+    //
     async selectRating(rating: number) {
         if (rating === 1) {
             await this.star1Loc.click();
