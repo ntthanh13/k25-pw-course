@@ -1,5 +1,3 @@
-export type Rating = 1 | 2 | 3 | 4 | 5;
-
 export const product_001 = {
     prodURL:"https://e-commerce-dev.betterbytesvn.com/product/fullstack-automation-qa-voi-playwright-typescript/",
     name:"FullStack Automation QA với Playwright Typescript",

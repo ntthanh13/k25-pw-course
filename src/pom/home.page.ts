@@ -16,7 +16,7 @@ export class HomePage extends CommonComponents {
     // constructor
     constructor(page: Page) {
         super(page);
-        this.homeUrl = "https://e-commerce-dev.betterbytesvn.com"
+        this.homeUrl = "https://e-commerce-dev.hoctest.com/"
         this.searchResultHeaderLoc = page.locator('//header[@class="woocommerce-products-header"]');
         this.searchResultCountLoc = page.locator('//p[@class="woocommerce-result-count"]');
         this.searchResultItemListLoc = page.locator('//ul[@class="products columns-4"]/li');
@@ -27,6 +27,9 @@ export class HomePage extends CommonComponents {
     // method
     async goHome() {
         await this.page.goto(this.homeUrl);
+    }
+    async getHomeUrl(){
+        return this.page.url();
     }
     async getSearchCountNumber() {
         // get text
