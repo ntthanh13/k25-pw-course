@@ -1,4 +1,4 @@
-import { Locator, LocatorScreenshotOptions, Page } from "@playwright/test";
+import { Locator, Page } from "@playwright/test";
 import { CommonComponents } from "./common.components";
 
 export class ProductPage extends CommonComponents {
