@@ -1,14 +1,15 @@
 import { Locator, Page } from "@playwright/test";
 import { LostPassPage } from "./lost-pass.page";
 import { HomePage } from "./home.page";
+import { AdminPage } from "./admin.page";
 
 export class LoginPage {
-    page:Page
+    page: Page
     loginUrl: string;
     usernameInputLoc: Locator;
     passwordInputLoc: Locator;
     visiblePassLoc: Locator;
-    submitBtnLoc: Locator;
+    loginBtnLoc: Locator;
     rememberMeCheckboxLoc: Locator;
     lostPassLoc: Locator;
     ecomDevLoc: Locator;
@@ -20,7 +21,7 @@ export class LoginPage {
         this.passwordInputLoc = page.locator('//input[@id="user_pass"]');
         this.visiblePassLoc = page.locator('//span[@class="dashicons dashicons-visibility"]');
         this.rememberMeCheckboxLoc = page.locator('//input[@id="rememberme"]');
-        this.submitBtnLoc = page.locator('//input[@id="wp-submit"]');
+        this.loginBtnLoc = page.locator('//input[@id="wp-submit"]');
         this.lostPassLoc = page.locator('//a[@class="wp-login-lost-password"]');
         this.ecomDevLoc = page.locator('//a[@href="https://e-commerce-dev.hoctest.com/"]');
     }
@@ -36,5 +37,17 @@ export class LoginPage {
         await this.ecomDevLoc.click();
         return new HomePage(this.page);
     }
-
+    // async inputLoginInfor(username:string, password:string){
+    //     await this.usernameInputLoc.fill(username);
+    //     await this.passwordInputLoc.fill(password);
+    // }
+    // async clickLoginBtn(){
+    //     await this.loginBtnLoc.click();
+    // }
+    async loginSuccess(username: string, password: string) {
+        await this.usernameInputLoc.fill(username);
+        await this.passwordInputLoc.fill(password);
+        await this.loginBtnLoc.click();
+        return new AdminPage(this.page);
+    }
 }
